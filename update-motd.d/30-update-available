@@ -1,0 +1,12 @@
+#!/bin/sh
+updates=$(xbps-install -Sun | cut -d ' ' -f 2 | grep -c 'update')
+printf '\n\033[1m-> XBPS updates\033[m\n'
+if [ "$updates" -eq '1' ]
+then
+	echo '1 package can be updated immediately.'
+else
+	printf '%s packages can be updated immediately.\n' "$updates"
+fi
+[ "$updates" -gt '0' ] && \
+	echo 'To see these package updates run: xbps-install -un'
+exit 0

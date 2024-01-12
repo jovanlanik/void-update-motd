@@ -1,0 +1,6 @@
+#!/bin/sh
+news=$(rsstail -1 -N -Z '-' -n 6 -u https://voidlinux.org/atom.xml)
+if [ "$?" -eq 0 ]
+then
+	printf '\n\033[1m-> Recent news\033[m\n%s\n' "$news"
+fi
